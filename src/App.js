@@ -25,6 +25,13 @@ import UseNavigate from './Components/UseNavigate';
 import Error from './Components/Error';
 import Dashboard_2 from './Components/Dashboard_2';
 import ProtectedRoute from './Components/ProtectedRoute';
+import Uncontrolled from './Components/Uncontrolled_Component';
+import ControlledSeperate from './Components/Controlled_Seperate';
+import ControlledObject from './Components/Controlled_Object';
+import FormValidation from './Components/Form_Validation';
+import AsyncValidation from './Components/Async_Validation';
+import Formik from './Components/Formik';
+
 
 function App() {
     return (
@@ -95,6 +102,24 @@ function App() {
             </Routes>
           </UserProvider>
         </Router> */}
+
+        {/* Uncontrolled Components in Forms */}
+        <Uncontrolled/>
+
+        {/* Controlled Components Using separate state variables in Forms */}
+        <ControlledSeperate/>
+
+        {/* Controlled Components Using objects in Forms */}
+        <ControlledObject/>
+
+        {/* Validatings in Forms */}
+        <FormValidation/>
+
+        {/* Asynchronous validation of forms */}
+        <AsyncValidation/>
+
+        {/* Use of Formik library for validations in forms */}
+        <Formik/>
 
       </>
     );
