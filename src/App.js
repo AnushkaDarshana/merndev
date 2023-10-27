@@ -31,48 +31,53 @@ import ControlledObject from './Components/Controlled_Object';
 import FormValidation from './Components/Form_Validation';
 import AsyncValidation from './Components/Async_Validation';
 import Formik from './Components/Formik';
+import CrudPost from './Components/CRUD/Post.jsx';
+import CrudGet from './Components/CRUD/Get.jsx';
+import CrudUpdate from './Components/CRUD/Update.jsx';
+import CrudSpecific from './Components/CRUD/GetSpecific.jsx';
+import CrudDelete from './Components/CRUD/Delete.jsx';
 
 
 function App() {
     return (
       <>
-        <Props name="React" city="Colombo"/>
+        {/* <Props name="React" city="Colombo"/> */}
 
         {/* UseState Hook */}
-        <UseState />
+        {/* <UseState /> */}
 
         {/* MouseEvents */}
-        <MouseEvents />
+        {/* <MouseEvents />
         <KeyboardEvents />
-        <FormEvents/>
+        <FormEvents/> */}
 
         {/* UseState Hook with arrays and objects */}
-        <ArraysWithUseState/>
-        <ObjectsWithUseState/>
+        {/* <ArraysWithUseState/>
+        <ObjectsWithUseState/> */}
 
         {/* UseEffect Hook */}
-        <UseEffect/>
+        {/* <UseEffect/> */}
 
         {/* UseContext Hook */}
-        <UserProvider>
+        {/* <UserProvider>
           <Login />
           <UserProfile/>
-        </UserProvider>
+        </UserProvider> */}
 
         {/* UseReducer Hook */}
-        <UseReducer/>
+        {/* <UseReducer/> */}
 
         {/* UseCallback Hook */}
-        <UseCallback/>
+        {/* <UseCallback/> */}
 
         {/* UseMemo Hook */}
-        <UseMemo/>
+        {/* <UseMemo/> */}
 
         {/* UseRef Hook */}
-        <UseRef/>
+        {/* <UseRef/> */}
 
         {/* UseLayout Hook */}
-        <UseLayout/>
+        {/* <UseLayout/> */}
 
 
         {/* Routing */}
@@ -104,23 +109,29 @@ function App() {
         </Router> */}
 
         {/* Uncontrolled Components in Forms */}
-        <Uncontrolled/>
+        {/* <Uncontrolled/> */}
 
         {/* Controlled Components Using separate state variables in Forms */}
-        <ControlledSeperate/>
+        {/* <ControlledSeperate/> */}
 
         {/* Controlled Components Using objects in Forms */}
-        <ControlledObject/>
+        {/* <ControlledObject/> */}
 
         {/* Validatings in Forms */}
-        <FormValidation/>
+        {/* <FormValidation/> */}
 
         {/* Asynchronous validation of forms */}
-        <AsyncValidation/>
+        {/* <AsyncValidation/> */}
 
         {/* Use of Formik library for validations in forms */}
-        <Formik/>
+        {/* <Formik/> */}
 
+        {/* CRUD Operations  */}
+        <CrudPost/>
+        <CrudGet/>
+        <CrudUpdate/>
+        <CrudSpecific/>
+        <CrudDelete/>
       </>
     );
 }
