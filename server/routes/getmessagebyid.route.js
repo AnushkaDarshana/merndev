@@ -3,22 +3,29 @@ const Message = require('../Database/models/messages');
 
 const router = express.Router();
 
-router.get('/:id',async (req,res)=>{
+router.get('/:msg', async (req, res) => {
+    try {
+        const message = await Message.findOne({ message: req.params.msg });
 
-    const message = await Message.findById(req.params.id);
-    try{
+        if (!message) {
+            return res.status(404).json({
+                status: 'Failed',
+                message: 'No message found with that ID'
+            });
+        }
+
         res.status(200).json({
             status: 'success',
-            data:{
+            data: {
                 message
             }
-        })
-    }catch(err){
+        });
+    } catch (err) {
         res.status(500).json({
-            status:'Failes',
-            message: err
+            status: 'Failed',
+            message: err.message
         });
     }
-})
+});
 
-module.exports = router
+module.exports = router;

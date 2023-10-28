@@ -2,33 +2,38 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const GetSpecific = () => {
-    const [id, setId] = useState(''); // Initialize with an empty string
+    const [content, setContent] = useState(''); // Initialize with an empty string
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
 
     useEffect(() => {
-        if (id) {
-            axios.get(`http://localhost:5000/get-message/${id}`)
+        if (content) {
+            axios.get(`http://localhost:5000/get-message/${content}`)
                 .then(res => {
-                    setMessage(res.data.message);
-                    setError(''); // Clear any previous errors
+                    if (res.data.data.message) {
+                        setMessage(res.data.data.message.message); // Assuming the message object has a 'message' field
+                        setError('');
+                    } else {
+                        setError('Unexpected response format from server');
+                        setMessage('');
+                    }
                 })
                 .catch(() => {
                     setError('Error fetching message from server');
-                    setMessage(''); // Clear any previous messages
+                    setMessage('');
                 });
         }
-    }, [id]); // This effect runs whenever the ID changes
+    }, [content]);
 
     return (
         <div>
-            <h2>Fetch Specific Message Only from Database</h2>
+            <h2>Fetch Specific Message from Database</h2>
             
             <input 
                 type="text"
-                placeholder="Enter ID to fetch message"
-                value={id}
-                onChange={e => setId(e.target.value)}
+                placeholder="Enter message content to fetch"
+                value={content}
+                onChange={e => setContent(e.target.value)}
             />
 
             {message && <p>Message: {message}</p>}
