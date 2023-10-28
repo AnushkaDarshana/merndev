@@ -3,11 +3,11 @@ import axios from 'axios';
 
 const Update = () => {
     const [id, setId] = useState(''); // Initialize with an empty string
-    const [message, setMessage] = useState('');
+    const [newMessage, setMessage] = useState('');
 
     const updateServerMessage = () => {
-        if (id && message) {
-            axios.put(`http://localhost:5000/update-message/${id}`, { message })
+        if (id && newMessage) {
+            axios.put(`http://localhost:5000/update-message/${id}`, { newMessage })
                 .catch(error => {
                     console.error('Error updating on server:', error); // Log the error for debugging
                 });
@@ -30,7 +30,7 @@ const Update = () => {
             <input 
                 type="text" 
                 placeholder="Enter message"
-                value={message}
+                value={newMessage}
                 onChange={e => setMessage(e.target.value)}
             />
 
