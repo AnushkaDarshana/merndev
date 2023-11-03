@@ -8,6 +8,4 @@ const connectDB = (url) =>{
         .catch((error)=>console.log(error));
 }
 
-
-
 module.exports = connectDB;

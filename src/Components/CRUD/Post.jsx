@@ -1,12 +1,31 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Post = () => {
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const sendToServer = () => {
+        const token = localStorage.getItem('jwtToken');
+
+        if (!token) {
+            // Redirect to login page if the user is not authenticated
+            navigate('/login');
+            return;
+        }
+
+        // Set the Authorization header
+        axios.defaults.headers.common['Authentication'] = 'Bearer ' + token;
+
         axios.post('http://localhost:5000/post-message', { message })
-            .catch(() => console.error('Error sending to server')); // Logging the error if there's any
+            .then(response => {
+                setMessage(''); // Clearing the input field
+                navigate('/getSpecificUserMsg');
+            })
+            .catch(error => {
+                console.error('Error sending to server:', error.response.data.message);
+            });
     };
 
     return (

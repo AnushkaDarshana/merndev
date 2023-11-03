@@ -1,9 +1,10 @@
 const express = require('express');
 const Message = require('../Database/models/messages');
+const { authenticate,authorize } = require('../Middleware/auth'); // Adjust the path accordingly
 
 const router = express.Router();
 
-router.put('/:id',async (req,res) => {
+router.put('/:id',authenticate , authorize('admin'), async (req,res) => {
     try {
         const updateMessage = await Message.findByIdAndUpdate(
           req.params.id,

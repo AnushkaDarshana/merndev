@@ -4,12 +4,12 @@ const { authenticate } = require('../Middleware/auth');
 
 const router = express.Router();
 
-router.get('/user-message', authenticate, async (req, res) => {
+router.get('/', authenticate, async (req, res) => {
     try {
-        const user = req.user; 
-        const message = await Message.findOne({ userId: user._id }); 
+        const user = req.user; // This comes from the authenticate middleware
+        const message = await Message.find({ userId: user._id }); // Assuming the Message schema has a userId field that links to the user's ID
 
-        if (!message) {
+        if (message.length === 0) {
             return res.status(404).json({
                 status: 'Failed',
                 message: 'No message found for the user'
@@ -19,7 +19,7 @@ router.get('/user-message', authenticate, async (req, res) => {
         res.status(200).json({
             status: 'success',
             data: {
-                message
+                messages: message
             }
         });
     } catch (err) {

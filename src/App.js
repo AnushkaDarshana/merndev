@@ -36,7 +36,10 @@ import CrudGet from './Components/CRUD/Get.jsx';
 import CrudUpdate from './Components/CRUD/Update.jsx';
 import CrudSpecific from './Components/CRUD/GetSpecific.jsx';
 import CrudDelete from './Components/CRUD/Delete.jsx';
-
+import Registration from './Components/Registration';
+import LoginNew from './Components/Login_new';
+import GetSpecificUserMsg from './Components/CRUD/GetSpecificUserMsgs';
+import ProtectedRoutesJWT from './Components/ProtectedRoutesJWT.jsx';
 
 function App() {
     return (
@@ -127,11 +130,36 @@ function App() {
         {/* <Formik/> */}
 
         {/* CRUD Operations  */}
-        <CrudPost/>
+        {/* <CrudPost/>
         <CrudGet/>
         <CrudUpdate/>
         <CrudSpecific/>
-        <CrudDelete/>
+        <CrudDelete/> */}
+
+
+        {/* Registration and Login */}
+        {/* <Router>
+          <Routes>
+            <Route path="/" element={<Registration />} />
+            <Route path="/login" element={<LoginNew />} /> 
+            <Route path="/createPost" element={<CrudPost />} /> 
+            <Route path="/getSpecificUserMsg" element={<GetSpecificUserMsg />} /> 
+            <Route path="/getAll" element={<CrudGet />} /> 
+          </Routes>
+        </Router> */}
+
+       {/* Protected Routes with JWT*/}
+        <Router>
+              <Routes>
+                  <Route path="/" element={<Registration />} />
+                  <Route path="/login" element={<LoginNew />} /> 
+                  <Route element={<ProtectedRoutesJWT />}>
+                      <Route path="createPost" element={<CrudPost />} /> 
+                      <Route path="getSpecificUserMsg" element={<GetSpecificUserMsg />} /> 
+                      <Route path="getAll" element={<CrudGet />} /> 
+                  </Route>
+              </Routes>
+          </Router>
       </>
     );
 }
